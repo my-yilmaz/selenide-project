@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import pages.TestPage;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -141,4 +142,28 @@ public class TestPageStepDefinitions {
         Assert.assertTrue(url().contains(string));
     }
 
+    // ACTIONS
+
+    @When("I drag the source in the target")
+    public void i_drag_the_source_in_the_target() {
+        // actions().dragAndDrop(testPage.source, testPage.target).build().perform();
+        //OR
+//        actions()
+//                .clickAndHold(testPage.source)
+//                .moveToElement(testPage.target)
+//                .build()
+//                .perform();
+        //OR
+        actions().dragAndDropBy(testPage.source, 154, 44).build().perform();
+
+    }
+
+    @Given("I scroll the page down")
+    public void i_scroll_the_page_down() {
+        actions().sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.ARROW_UP).build().perform();
+    }
+
+
 }
+
+

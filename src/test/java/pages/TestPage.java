@@ -2,7 +2,6 @@ package pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.impl.CollectionElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -44,4 +43,11 @@ public class TestPage {
     public SelenideElement pageHader = $(By.xpath("//h3"));
 
     public SelenideElement backToTechpro = $(By.xpath("//a[@type='button']"));
+
+    // ACTIONS
+    public SelenideElement source = $(By.id("draggable"));
+    public SelenideElement target = $(By.id("droppable"));
+    public SelenideElement droppedText = $(By.xpath("//p[text()=\"Dropped!\"]"));
+
+
 }

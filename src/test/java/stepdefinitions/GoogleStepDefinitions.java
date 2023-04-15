@@ -20,6 +20,8 @@ public class GoogleStepDefinitions {
 
     @Given("I wait for {int} seconds")
     public void i_wait_for_seconds(Integer int1) {
+        //! selenide default olarak 4 sn bekler, daha fazla beklemek icin sleep mthodu kullanilir
+        //! selenide milisecond kabul eder, saniyeye cevirmek icin 1000 ile carpariz
         sleep(int1 * 1000);
     }
 
@@ -60,8 +62,6 @@ public class GoogleStepDefinitions {
         googlePage.resultSection.shouldNotHave(text("MERCEDES"));
         googlePage.resultSection.shouldBe(visible);
         //googlePage.resultSection.shouldHave(exactText("Yaklaşık 672.000.000 sonuç bulundu"));
-
-
     }
 
     @Then("the first result in the page sections should contain {string}")
