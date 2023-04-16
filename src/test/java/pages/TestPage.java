@@ -56,5 +56,9 @@ public class TestPage {
     // SCREENSHOT
     public SelenideElement upcomingPrograms = $(By.id("MjI4NDoxMDk1-1"));
 
+    // JS EXECUTOR
+
+    public SelenideElement amazonFooter = $(By.xpath("//table[@class='navFooterMoreOnAmazon']"));
+
 
 }

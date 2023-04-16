@@ -5,9 +5,11 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.conditions.Text;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import pages.TestPage;
 
+import java.io.File;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -188,4 +190,33 @@ public class TestPageStepDefinitions {
         testPage.helloWorld.shouldHave(Condition.text("Hello World!!"));
     }
 
+    @Given("I try to upload the file on this path {string}")
+    public void i_try_to_upload_the_file_on_this_path(String string) {
+        //        Getting the file path
+//                    USER DIRECTORY               + FILE PATH = FULL PATH
+        String path = System.getProperty("user.home") + string;
+        System.out.println(path);
+        File fullPath = new File(path);
+//        Selecting the file
+        $(By.id("file-upload")).uploadFile(fullPath);
+//        click upload button
+        $(By.id("file-submit")).click();
+    }
+
+    @Then("I verify the file is uploaded")
+    public void i_verify_the_file_is_uploaded() {
+        $(By.xpath("//h3")).shouldHave(Condition.text("File Uploaded!"));
+    }
+
+    @And("I scroll down to footer section")
+    public void iScrollDownToFooterSection() {
+        executeJavaScript("arguments[0].scrollIntoView(true);", testPage.amazonFooter);
+    }
+
+    @And("I click on {string} by js on amazon table")
+    public void iClickOnByJsOnAmazonTable(String string) {
+        // $(By.xpath("//table[@class='navFooterMoreOnAmazon']//*[contains(text(),'Amazon Music')]"));
+        SelenideElement element = $(By.xpath("//table[@class='navFooterMoreOnAmazon']//*[contains(text(),'" + string + "')]"));
+        executeJavaScript("arguments[0].click();", element);
+    }
 }
