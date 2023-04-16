@@ -2,11 +2,15 @@ package stepdefinitions;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.conditions.Text;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.TestPage;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -162,8 +166,26 @@ public class TestPageStepDefinitions {
     public void i_scroll_the_page_down() {
         actions().sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.ARROW_UP).build().perform();
     }
+// EXPILICIT WAIT
 
+    @Given("I click on start button")
+    public void i_click_on_start_button() {
+        testPage.startButton.click();
+
+    }
+
+    @Then("verify the Hello World! text is displayed")
+    public void verify_the_hello_world_text_is_displayed() {
+        // FAILS WITH NOT WAIT
+        // HANDLE WITH WebDriverWait CLASS
+//        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.ofSeconds(20));
+//        wait.until(ExpectedConditions.visibilityOf(testPage.helloWorld));
+
+        // SELENIDE WAIT
+        testPage.helloWorld.should(visible, Duration.ofSeconds(20));
+
+        //Assert.assertEquals("Hello World!", testPage.helloWorld.getText());
+        testPage.helloWorld.shouldHave(Condition.text("Hello World!!"));
+    }
 
 }
-
-

@@ -49,5 +49,12 @@ public class TestPage {
     public SelenideElement target = $(By.id("droppable"));
     public SelenideElement droppedText = $(By.xpath("//p[text()=\"Dropped!\"]"));
 
+    // EXPILICIT WAIT
+    public SelenideElement startButton = $(By.xpath("//div[@id='start']//button"));
+    public SelenideElement helloWorld = $(By.xpath("//div[@id='finish']//h4"));
+
+    // SCREENSHOT
+    public SelenideElement upcomingPrograms = $(By.id("MjI4NDoxMDk1-1"));
+
 
 }
