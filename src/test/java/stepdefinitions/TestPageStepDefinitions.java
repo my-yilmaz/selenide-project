@@ -49,26 +49,40 @@ public class TestPageStepDefinitions {
 
     @Given("I click on {string} if not already selected")
     public void i_click_on_if_not_already_selected(String string) {
-        if (string.equals("Checkbox 1") && !testPage.checkbox1.isSelected()) {
-            testPage.checkbox1.shouldNot(Condition.checked);
-            testPage.checkbox1.click();
-            testPage.checkbox1.shouldBe(Condition.checked);
-        } else if (string.equals("Checkbox 2") && !testPage.checkbox2.isSelected()) {
-            testPage.checkbox2.shouldNot(Condition.checked);
-            testPage.checkbox2.click();
-            testPage.checkbox2.shouldBe(Condition.checked);
-        } else if (string.equals("Red") && !testPage.red.isSelected()) {
-            testPage.red.shouldNot(Condition.checked);
-            testPage.red.click();
-            testPage.red.shouldBe(Condition.checked);
-        } else if (string.equals("Yellow") && !testPage.yellow.isSelected()) {
-            testPage.yellow.shouldNot(Condition.checked);
-            testPage.yellow.click();
-            testPage.yellow.shouldBe(Condition.checked);
-        } else if (string.equals("Football") && !testPage.football.isSelected()) {
-            testPage.football.shouldNot(Condition.checked);
-            testPage.football.click();
-            testPage.football.shouldBe(Condition.checked);
+        switch (string) {
+            case "Checkbox 1":
+                if (!testPage.checkbox1.isSelected()) {
+                    testPage.checkbox1.click();
+                    testPage.checkbox1.shouldBe(Condition.checked);
+                }
+                break;
+            case "Checkbox 2":
+                if (!testPage.checkbox2.isSelected()) {
+                    testPage.checkbox2.click();
+                    testPage.checkbox2.shouldBe(Condition.checked);
+                }
+                break;
+            case "Red":
+                if (!testPage.red.isSelected()) {
+                    testPage.red.click();
+                    testPage.red.shouldBe(Condition.checked);
+                }
+                break;
+            case "Yellow":
+                if (!testPage.yellow.isSelected()) {
+                    testPage.yellow.click();
+                    testPage.yellow.shouldBe(Condition.checked);
+                }
+                break;
+            case "Football":
+                if (!testPage.football.isSelected()) {
+                    testPage.football.click();
+                    testPage.football.shouldBe(Condition.checked);
+                }
+                break;
+            default:
+                System.out.println("Gecersiz secenek");
+                break;
         }
     }
 
