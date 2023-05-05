@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         features = "./src/test/resources/features",
         glue = {"stepdefinitions"},
         dryRun = false,
-        tags = "@radio_checkbox"
+        tags = "@positive_login_test"
 
 )
 public class Runner {
