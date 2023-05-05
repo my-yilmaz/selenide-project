@@ -1,5 +1,6 @@
 Feature: login test
-@positive_login_test
+
+  @positive_login_test
   Scenario: TC01 positive login test
     Given I navigate to "https://www.saucedemo.com/"
     Then Verify login_logo
